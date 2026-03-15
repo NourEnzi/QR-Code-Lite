@@ -8,7 +8,7 @@
     })(window,document,'script','dataLayer','GTM-55PRQZF3');</script>
     <title>المولد الاحترافي QR Code Lite - الإصدار المدرسي</title>
     <link rel="icon" href="icon.png" type="image/png">
-    
+    <link rel="apple-touch-icon" href="icon.png">
     <meta property="og:title" content="QR Code Lite - مدرسة حي الضباط">
     <meta property="og:description" content="تطبيق تعليمي لإنشاء رموز QR تفاعلية لمختبرات الفيزياء وعلوم الأرض في مدرسة حي الضباط الثانوية المختلطة.">
     <meta property="og:image" content="icon.png">
