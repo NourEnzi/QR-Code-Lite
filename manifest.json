@@ -1,5 +1,5 @@
 {
-  "name": "QR Code Generator",
+  "name": "QR Code Lite",
   "short_name": "QR Code Lite",
 "description": "تطبيق تعليمي لإنشاء رموز QR تفاعلية لمختبرات الفيزياء وعلوم الأرض في مدرسة حي الضباط الثانوية المختلطة.",
 "start_url": "./index.html",
