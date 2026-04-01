@@ -210,25 +210,37 @@
            نظام الطباعة الذكي (Smart Print Modes)
            ========================================= */
         @media print {
-            body { background-color: #fff !important; color: #000 !important; padding: 0; }
+            @page { margin: 0.5cm; }
+            
+            html, body { 
+                background-color: #fff !important; 
+                color: #000 !important; 
+                padding: 0 !important; 
+                margin: 0 !important;
+                height: auto !important; 
+                min-height: auto !important; 
+                display: block !important;
+                overflow: visible !important;
+            }
+
             .floating-action-menu, .project-info-card, .copyright-footer, .history-section { display: none !important; }
 
             /* الوضع الافتراضي: إخفاء الأقسام الرئيسية في الطباعة لنتحكم بها برمجياً */
             .calculator-section, .print-sheet-section { display: none !important; }
 
             /* الوضع الأول (طباعة رمز واحد مفرد) */
-            body.mode-print-single .calculator-section { display: block !important; box-shadow: none; border: none; padding: 0; margin: 0 auto; }
+            body.mode-print-single .calculator-section { display: block !important; box-shadow: none; border: none; padding: 0; margin: 0 auto; page-break-after: avoid; }
             body.mode-print-single .disclaimer-box, body.mode-print-single .form-group, body.mode-print-single .customization-box, body.mode-print-single .action-buttons, body.mode-print-single .download-group, body.mode-print-single .print-btn, body.mode-print-single .add-to-sheet-btn { display: none !important; }
             body.mode-print-single h2 { display: block !important; margin-bottom: 5px; font-size: 28px; }
             body.mode-print-single .school-badge { display: block !important; margin-bottom: 40px; }
             body.mode-print-single .result-section { display: block !important; margin-top: 0; text-align: center; }
-            body.mode-print-single .qr-display-box { box-shadow: none; border: none; padding: 0; margin: 0 auto; display: flex; justify-content: center; align-items: center; }
+            body.mode-print-single .qr-display-box { box-shadow: none; border: none; padding: 0; margin: 0 auto; display: flex; justify-content: center; align-items: center; page-break-inside: avoid; }
 
             /* الوضع الثاني (طباعة الورقة المجمعة - الملصقات) */
-            body.mode-print-sheet .print-sheet-section { display: block !important; box-shadow: none; border: none; padding: 0; margin: 0 auto; max-width: 100%; }
+            body.mode-print-sheet .print-sheet-section { display: block !important; box-shadow: none; border: none; padding: 0; margin: 0 auto; max-width: 100%; page-break-after: avoid; }
             body.mode-print-sheet .print-sheet-header { display: none !important; }
-            body.mode-print-sheet .print-sheet-grid { border: none; padding: 0; gap: 15px; grid-template-columns: repeat(3, 1fr); }
-            body.mode-print-sheet .sheet-item { border: 1px dashed #ccc; padding: 10px; page-break-inside: avoid; }
+            body.mode-print-sheet .print-sheet-grid { border: none; padding: 0; gap: 15px; grid-template-columns: repeat(3, 1fr); display: grid; }
+            body.mode-print-sheet .sheet-item { border: 1px dashed #ccc; padding: 10px; page-break-inside: avoid; break-inside: avoid; }
         }
     </style>
 </head>
@@ -347,7 +359,7 @@
 
     <div class="copyright-footer">
         <p>&copy; 2026 جميع الحقوق محفوظة - تم التطوير والبرمجة بواسطة نورالدين السوالمه</p>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; direction: ltr;">Version: <span style="font-weight: bold;">V1.4.0 (Lab Lite - Smart Print)</span></p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; direction: ltr;">Version: <span style="font-weight: bold;">V1.4.1 (Lab Lite - Smart Print)</span></p>
     </div>
 
     <div class="floating-action-menu">
