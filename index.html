@@ -30,17 +30,17 @@
     <style>
         /* المتغيرات الأساسية (الوضع النهاري - طابع علمي أنثوي) */
         :root { 
-            --bg-main: #fdf4f9; /* خلفية لافندر/وردي فاتح جداً */
+            --bg-main: #fdf4f9; 
             --calc-bg: #ffffff; 
             --text-main: #2c3e50;
             --text-muted: #7f8c8d;
-            --border-col: #d2b4de; /* حدود بنفسجية ناعمة */
-            --title-color: #6a1b9a; /* بنفسجي داكن / ماجنتا للعناوين */
+            --border-col: #d2b4de; 
+            --title-color: #6a1b9a; 
             --input-bg: #fff;
-            --btn-bg: #8e44ad; /* لون الأزرار: جمشت (Amethyst) */
+            --btn-bg: #8e44ad; 
             --btn-hover: #732d91;
             --law-col-bg: #fbf8fc;
-            --info-header-bg: #f4ecf7; /* خلفية العداد ناعمة */
+            --info-header-bg: #f4ecf7; 
             --success-text: #27ae60;
             --warning-text: #e67e22;
             --danger-text: #e74c3c;
@@ -51,12 +51,12 @@
 
         /* المتغيرات (الوضع الليلي - طابع فضاء وفيزياء) */
         body.dark-mode {
-            --bg-main: #1a1025; /* بنفسجي ليلي عميق */
-            --calc-bg: #2c1e38; /* خلفية الصندوق */
+            --bg-main: #1a1025; 
+            --calc-bg: #2c1e38; 
             --text-main: #e0e0e0;
             --text-muted: #bdc3c7;
             --border-col: #5b2c6f;
-            --title-color: #d7bde2; /* لافندر فاتح للعناوين */
+            --title-color: #d7bde2; 
             --input-bg: #3b284a;
             --btn-bg: #9b59b6;
             --btn-hover: #8e44ad;
@@ -74,11 +74,11 @@
             margin: 0; padding: 20px;
             min-height: 100vh; display: flex; flex-direction: column;
             justify-content: center; align-items: center; box-sizing: border-box;
-            -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; /* حماية: منع تظليل ونسخ النصوص */
+            -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; 
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* استثناء الحماية: السماح بالتظليل والنسخ داخل صناديق الإدخال فقط */
+        /* استثناء الحماية */
         input, textarea {
             -webkit-user-select: text !important; 
             -moz-user-select: text !important; 
@@ -91,7 +91,7 @@
             box-shadow: 0 8px 30px rgba(106, 27, 154, 0.08); width: 100%; max-width: 850px;
             margin-top: 20px; box-sizing: border-box; position: relative;
             transition: background-color 0.4s ease;
-            border-top: 5px solid var(--btn-bg); /* خط جمالي علوي */
+            border-top: 5px solid var(--btn-bg);
         }
 
         h2 { color: var(--title-color); text-align: center; margin-bottom: 25px; line-height: 1.4; font-size: 26px; transition: color 0.4s ease; }
@@ -111,7 +111,6 @@
         input:focus, textarea:focus, select:focus { border-color: var(--btn-bg); outline: none; box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.2); }
         input[type="color"] { padding: 5px; height: 50px; cursor: pointer; }
 
-        /* تنسيق عداد الأحرف والنصيحة الديناميكية */
         .char-counter-container {
             display: flex; justify-content: space-between; align-items: center;
             margin-top: 8px; font-size: 13px; font-weight: 600;
@@ -123,7 +122,6 @@
         .customization-box { background-color: var(--law-col-bg); padding: 20px; border-radius: 8px; border: 1px solid var(--border-col); margin-top: 20px; margin-bottom: 20px; transition: all 0.4s ease; }
         .customization-box h3 { margin-top: 0; color: var(--title-color); font-size: 17px; border-bottom: 2px solid var(--border-col); padding-bottom: 10px; }
 
-        /* أزرار العمليات (الإنشاء والتفريغ) */
         .action-buttons { display: flex; gap: 10px; margin-top: 15px; width: 100%; }
         .calc-btn { flex: 1; padding: 15px; background-color: var(--btn-bg); color: white; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease, transform 0.1s ease; font-family: inherit; }
         .calc-btn:hover { background-color: var(--btn-hover); }
@@ -133,7 +131,6 @@
         .clear-btn:hover { background-color: #c0392b; }
         .clear-btn:active { transform: scale(0.98); }
 
-        /* منطقة النتائج والتنزيل */
         .result-section { margin-top: 30px; display: none; text-align: center; scroll-margin-top: 20px; }
         .qr-display-box { background-color: white; padding: 20px; border-radius: 10px; display: inline-block; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         
@@ -145,13 +142,33 @@
         .print-btn { background-color: #2c3e50; margin-top: 10px; width: 100%; padding: 15px; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease; font-family: inherit;}
         .print-btn:hover { background-color: #34495e; }
         
+        /* زر الإضافة لورقة الطباعة */
+        .add-to-sheet-btn { background-color: #3498db; margin-top: 10px; width: 100%; padding: 15px; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease; font-family: inherit;}
+        .add-to-sheet-btn:hover { background-color: #2980b9; }
+
+        /* منطقة الورقة المجمعة (الجديدة) */
+        .print-sheet-section {
+            background-color: var(--calc-bg); padding: 25px; border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.15); width: 100%; max-width: 850px;
+            margin-top: 20px; box-sizing: border-box; display: none;
+            border-top: 5px solid #3498db; scroll-margin-top: 20px;
+        }
+        .print-sheet-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+        .print-sheet-header h3 { color: var(--title-color); margin: 0; font-size: 20px;}
+        .print-sheet-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+            background: #fff; padding: 20px; border: 2px dashed var(--border-col); border-radius: 8px; min-height: 150px;
+        }
+        .sheet-item { text-align: center; border: 1px solid #eee; padding: 10px; border-radius: 8px; background: #fff; }
+        .sheet-item img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+
         /* قسم السجل */
         .history-section { margin-top: 30px; border-top: 2px dashed var(--border-col); padding-top: 20px; display: none; }
         .history-section h3 { color: var(--title-color); }
         .history-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 15px; }
-        .history-item { cursor: pointer; border: 1px solid var(--border-col); border-radius: 5px; overflow: hidden; background: white; padding: 5px; transition: transform 0.2s; }
-        .history-item:hover { transform: scale(1.05); border-color: var(--btn-bg); }
-        .history-item img { width: 100%; height: auto; display: block; }
+        .history-item-log { cursor: pointer; border: 1px solid var(--border-col); border-radius: 5px; overflow: hidden; background: white; padding: 5px; transition: transform 0.2s; }
+        .history-item-log:hover { transform: scale(1.05); border-color: var(--btn-bg); }
+        .history-item-log img { width: 100%; height: auto; display: block; }
 
         /* بطاقة المشروع التعليمي */
         .project-info-card {
@@ -186,17 +203,32 @@
             .download-group { flex-direction: column; }
             .download-group select, .download-btn { width: 100%; border-radius: 5px; margin-bottom: 5px; border-left: 1px solid var(--border-col);}
             .char-counter-container { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .print-sheet-grid { grid-template-columns: repeat(2, 1fr); }
         }
         
-        /* التعديل الجذري للطباعة */
+        /* =========================================
+           نظام الطباعة الذكي (Smart Print Modes)
+           ========================================= */
         @media print {
             body { background-color: #fff !important; color: #000 !important; padding: 0; }
-            .calculator-section { box-shadow: none; padding: 0; margin: 0 auto; border: none; }
-            .disclaimer-box, .form-group, .char-counter-container, .customization-box, .action-buttons, .download-group, .print-btn, .history-section, .project-info-card, .copyright-footer, .floating-action-menu { display: none !important; }
-            h2 { display: block !important; margin-bottom: 5px; font-size: 28px; }
-            .school-badge { display: block !important; margin-bottom: 40px; }
-            .result-section { display: block !important; margin-top: 0; text-align: center; }
-            .qr-display-box { box-shadow: none; border: none; padding: 0; margin: 0 auto; display: flex; justify-content: center; align-items: center; }
+            .floating-action-menu, .project-info-card, .copyright-footer, .history-section { display: none !important; }
+
+            /* الوضع الافتراضي: إخفاء الأقسام الرئيسية في الطباعة لنتحكم بها برمجياً */
+            .calculator-section, .print-sheet-section { display: none !important; }
+
+            /* الوضع الأول (طباعة رمز واحد مفرد) */
+            body.mode-print-single .calculator-section { display: block !important; box-shadow: none; border: none; padding: 0; margin: 0 auto; }
+            body.mode-print-single .disclaimer-box, body.mode-print-single .form-group, body.mode-print-single .customization-box, body.mode-print-single .action-buttons, body.mode-print-single .download-group, body.mode-print-single .print-btn, body.mode-print-single .add-to-sheet-btn { display: none !important; }
+            body.mode-print-single h2 { display: block !important; margin-bottom: 5px; font-size: 28px; }
+            body.mode-print-single .school-badge { display: block !important; margin-bottom: 40px; }
+            body.mode-print-single .result-section { display: block !important; margin-top: 0; text-align: center; }
+            body.mode-print-single .qr-display-box { box-shadow: none; border: none; padding: 0; margin: 0 auto; display: flex; justify-content: center; align-items: center; }
+
+            /* الوضع الثاني (طباعة الورقة المجمعة - الملصقات) */
+            body.mode-print-sheet .print-sheet-section { display: block !important; box-shadow: none; border: none; padding: 0; margin: 0 auto; max-width: 100%; }
+            body.mode-print-sheet .print-sheet-header { display: none !important; }
+            body.mode-print-sheet .print-sheet-grid { border: none; padding: 0; gap: 15px; grid-template-columns: repeat(3, 1fr); }
+            body.mode-print-sheet .sheet-item { border: 1px dashed #ccc; padding: 10px; page-break-inside: avoid; }
         }
     </style>
 </head>
@@ -204,18 +236,16 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-55PRQZF3" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     <script>
-        // حماية ذكية: منع النقر بزر الماوس الأيمن إلا داخل حقول الإدخال لتسهيل اللصق
         document.addEventListener('contextmenu', function(e) { 
             if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
                 e.preventDefault(); 
             }
         });
         
-        // منع اختصارات لوحة المفاتيح للمطورين
         document.onkeydown = function(e) {
-            if(e.keyCode == 123) return false; // منع F12
-            if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) return false; // منع Ctrl+Shift+I وغيرها
-            if(e.ctrlKey && e.keyCode == 85) return false; // منع Ctrl+U
+            if(e.keyCode == 123) return false; 
+            if(e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) return false; 
+            if(e.ctrlKey && e.keyCode == 85) return false; 
         };
     </script>
 
@@ -283,7 +313,8 @@
                 <button id="btn_download_qr" class="download-btn"><i class="fa-solid fa-download"></i> حفظ الرمز</button>
             </div>
             
-            <button id="btn_print_qr" class="print-btn"><i class="fa-solid fa-print"></i> طباعة الرمز مباشرة للمختبر</button>
+            <button id="btn_add_to_sheet" class="add-to-sheet-btn"><i class="fa-solid fa-layer-group"></i> ➕ إضافة إلى ورقة الطباعة المجمعة</button>
+            <button id="btn_print_qr" class="print-btn"><i class="fa-solid fa-print"></i> طباعة هذا الرمز منفرداً للمختبر</button>
         </div>
 
         <div class="history-section" id="historySection">
@@ -291,6 +322,18 @@
             <div class="history-grid" id="historyGrid"></div>
         </div>
     </main>
+
+    <section class="print-sheet-section" id="printSheetSection">
+        <div class="print-sheet-header">
+            <h3><i class="fa-regular fa-file-lines"></i> ورقة الطباعة المجمعة (A4)</h3>
+            <div style="display: flex; gap: 10px;">
+                <button id="btn_print_sheet_action" class="calc-btn" style="background-color: #2c3e50; padding: 10px 20px; width: auto;"><i class="fa-solid fa-print"></i> طباعة الملصقات</button>
+                <button id="btn_clear_sheet" class="clear-btn" style="padding: 10px 15px; width: auto; font-size: 16px;"><i class="fa-solid fa-trash"></i> تفريغ الورقة</button>
+            </div>
+        </div>
+        <div class="print-sheet-grid" id="printSheetGrid">
+            </div>
+    </section>
 
     <div class="project-info-card">
         <h3><i class="fa-solid fa-flask"></i> حول هذا المشروع التعليمي</h3>
@@ -304,7 +347,7 @@
 
     <div class="copyright-footer">
         <p>&copy; 2026 جميع الحقوق محفوظة - تم التطوير والبرمجة بواسطة نورالدين السوالمه</p>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; direction: ltr;">Version: <span style="font-weight: bold;">V1.3.0 (Lab Lite)</span></p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; direction: ltr;">Version: <span style="font-weight: bold;">V1.4.0 (Lab Lite - Smart Print)</span></p>
     </div>
 
     <div class="floating-action-menu">
@@ -399,9 +442,7 @@
                 return;
             }
 
-            // حقن رمز اليونيكود المخفي لضمان قراءة اللغة العربية بامتياز
             let qrFinalData = '\uFEFF' + rawData;
-
             const container = document.getElementById("qrcode_container");
             container.innerHTML = "";
 
@@ -431,7 +472,6 @@
             qrcodeObject = new QRCode(container, options);
             document.getElementById("resultBox").style.display = "block";
             
-            // التمرير التلقائي السلس نحو الرمز المولد
             setTimeout(() => {
                 document.getElementById("resultBox").scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 100);
@@ -467,9 +507,56 @@
             }
         });
 
-        // --- طباعة الصورة مباشرة ---
+        // --- برمجة نظام ورقة الملصقات المجمعة (الجديد) ---
+        const btnAddToSheet = document.getElementById("btn_add_to_sheet");
+        const printSheetSection = document.getElementById("printSheetSection");
+        const printSheetGrid = document.getElementById("printSheetGrid");
+        const btnPrintSheetAction = document.getElementById("btn_print_sheet_action");
+        const btnClearSheet = document.getElementById("btn_clear_sheet");
+
+        // 1. إضافة الرمز الحالي إلى الورقة المجمعة
+        btnAddToSheet.addEventListener("click", function() {
+            const canvas = document.querySelector("#qrcode_container canvas");
+            if(!canvas) return alert("يرجى إنشاء رمز أولاً.");
+
+            const imgData = canvas.toDataURL("image/png");
+            let img = document.createElement("img");
+            img.src = imgData;
+
+            let div = document.createElement("div");
+            div.className = "sheet-item";
+            div.appendChild(img);
+
+            printSheetGrid.appendChild(div);
+            printSheetSection.style.display = "block";
+
+            // تمرير الشاشة للأسفل لرؤية الورقة
+            printSheetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // 2. تفريغ الورقة المجمعة
+        btnClearSheet.addEventListener("click", function() {
+            if(confirm("هل أنت متأكد من تفريغ جميع الملصقات من ورقة الطباعة؟")) {
+                printSheetGrid.innerHTML = "";
+                printSheetSection.style.display = "none";
+            }
+        });
+
+        // 3. طباعة الرمز المفرد
         document.getElementById("btn_print_qr").addEventListener("click", function() {
+            document.body.classList.add("mode-print-single");
             window.print();
+            setTimeout(() => document.body.classList.remove("mode-print-single"), 1000);
+        });
+
+        // 4. طباعة الورقة المجمعة (شبكة الملصقات)
+        btnPrintSheetAction.addEventListener("click", function() {
+            if(printSheetGrid.innerHTML.trim() === "") {
+                return alert("الورقة فارغة. يرجى إضافة رموز أولاً.");
+            }
+            document.body.classList.add("mode-print-sheet");
+            window.print();
+            setTimeout(() => document.body.classList.remove("mode-print-sheet"), 1000);
         });
 
         // --- حفظ واسترجاع السجل المحلي ---
@@ -495,7 +582,7 @@
                     let img = document.createElement("img");
                     img.src = imgData;
                     let div = document.createElement("div");
-                    div.className = "history-item";
+                    div.className = "history-item-log";
                     div.appendChild(img);
                     
                     div.addEventListener("click", () => {
