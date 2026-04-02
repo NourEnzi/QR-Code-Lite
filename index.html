@@ -230,7 +230,7 @@
 
             /* الوضع الأول (طباعة رمز واحد مفرد) */
             body.mode-print-single .calculator-section { display: block !important; box-shadow: none; border: none; padding: 0; margin: 0 auto; page-break-after: avoid; }
-            body.mode-print-single .disclaimer-box, body.mode-print-single .form-group, body.mode-print-single .customization-box, body.mode-print-single .action-buttons, body.mode-print-single .download-group, body.mode-print-single .print-btn, body.mode-print-single .add-to-sheet-btn { display: none !important; }
+            body.mode-print-single .disclaimer-box, body.mode-print-single .form-group, body.mode-print-single .customization-box, body.mode-print-single .action-buttons, body.mode-print-single .download-group, body.mode-print-single .print-btn, body.mode-print-single .add-to-sheet-btn, label[for="upload_multiple_qrs"] { display: none !important; }
             body.mode-print-single h2 { display: block !important; margin-bottom: 5px; font-size: 28px; }
             body.mode-print-single .school-badge { display: block !important; margin-bottom: 40px; }
             body.mode-print-single .result-section { display: block !important; margin-top: 0; text-align: center; }
@@ -313,6 +313,11 @@
             <button id="btn_clear_fields" class="clear-btn" title="تفريغ الحقول"><i class="fa-solid fa-broom"></i></button>
         </div>
 
+        <label for="upload_multiple_qrs" class="calc-btn" style="background-color: #27ae60; text-align: center; display: block; margin-top: 15px; cursor: pointer; border-radius: 5px; color: white; padding: 15px; font-size: 18px; font-weight: bold;">
+            <i class="fa-solid fa-images"></i> استيراد رموز جاهزة من المعرض للطباعة
+        </label>
+        <input type="file" id="upload_multiple_qrs" accept="image/*" multiple style="display: none;">
+
         <div class="result-section" id="resultBox">
             <div class="qr-display-box" id="qrcode_container"></div>
             
@@ -359,7 +364,7 @@
 
     <div class="copyright-footer">
         <p>&copy; 2026 جميع الحقوق محفوظة - تم التطوير والبرمجة بواسطة نورالدين السوالمه</p>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; direction: ltr;">Version: <span style="font-weight: bold;">V1.4.1 (Lab Lite - Smart Print)</span></p>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; direction: ltr;">Version: <span style="font-weight: bold;">V1.4.2 (Lab Lite - Multi Print)</span></p>
     </div>
 
     <div class="floating-action-menu">
@@ -544,6 +549,42 @@
 
             // تمرير الشاشة للأسفل لرؤية الورقة
             printSheetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // --- استيراد الرموز الجاهزة من المعرض (الميزة الجديدة) ---
+        const uploadMultipleQrs = document.getElementById("upload_multiple_qrs");
+        uploadMultipleQrs.addEventListener("change", function(e) {
+            const files = e.target.files;
+            if(files.length === 0) return;
+
+            // استخدام Array.from للتعامل مع مجموعة الملفات وعمل حلقة تكرار
+            Array.from(files).forEach(file => {
+                // التأكد من أن الملف عبارة عن صورة
+                if(!file.type.startsWith('image/')) return;
+
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    let img = document.createElement("img");
+                    img.src = event.target.result;
+
+                    let div = document.createElement("div");
+                    div.className = "sheet-item";
+                    div.appendChild(img);
+
+                    printSheetGrid.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            });
+
+            // إظهار قسم ورقة الطباعة بعد إضافة الصور
+            printSheetSection.style.display = "block";
+            
+            setTimeout(() => {
+                printSheetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+
+            // تفريغ المدخل ليسمح برفع نفس الصور مرة أخرى إذا لزم الأمر
+            uploadMultipleQrs.value = "";
         });
 
         // 2. تفريغ الورقة المجمعة
